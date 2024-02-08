@@ -1,0 +1,7 @@
+.mainContainer {
+    background-color: var(--bgColor);
+    padding: 20px;
+    width: 100%;
+    height: calc(100vh - 105px);
+    overflow-y: scroll;
+}

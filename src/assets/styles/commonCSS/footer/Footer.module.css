@@ -1,0 +1,13 @@
+.footer {
+    border-top: 1px solid var(--ash);
+    height: 30px;
+    background-color: var(--white);
+}
+
+.footerContent {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 20px;
+}

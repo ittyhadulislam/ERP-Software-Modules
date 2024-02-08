@@ -1,0 +1,12 @@
+.column {
+    position: absolute;
+    height: 100vh;
+    width: calc(100% - 250px);
+    left: 250px;
+    transition: .3s;
+}
+
+.column.active {
+    width: calc(100% - 80px);
+    left: 80px;
+}

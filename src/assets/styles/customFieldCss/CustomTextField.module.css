@@ -1,0 +1,16 @@
+.inputField input {
+    height: 30px;
+    padding: 0px 10px;
+    font-size: 14px;
+    width: 100%;
+}
+
+.inputField label {
+    height: 20px;
+    top: -11px;
+    font-size: 14px;
+}
+
+.inputField label[data-shrink="true"] {
+    top: 0;
+}

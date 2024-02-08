@@ -1,0 +1,15 @@
+.listItem {
+    padding: 10px;
+    margin-bottom: 20px;
+    gap: 8px;
+}
+
+.listIcon {
+    justify-content: center;
+}
+
+.listText {
+    color: var(--white);
+    display: "inline-block";
+    white-space: nowrap;
+}

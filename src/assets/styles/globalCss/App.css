@@ -1,0 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Material+Icons+Outlined");
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+
+:root {
+    --white: #ffffff;
+    --black: #222222;
+    --ash: #999999;
+    --sky-blue: #39A7FF;
+    --blue: #0D3973;
+    --bgColor: #F2F4F4
+}
+
+body {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+
+a {
+    text-decoration: none;
+}

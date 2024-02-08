@@ -1,0 +1,8 @@
+.topBar {
+    display: flex;
+    justify-content: space-between;
+    height: 75px;
+    padding: 0px 20px;
+    background-color: #fff;
+    box-shadow: rgba(33, 35, 38, 0.1) 0px 10px 10px -10px;
+}
