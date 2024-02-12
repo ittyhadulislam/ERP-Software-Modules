@@ -1,7 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
-import PenaltySection from "../../pages/PenaltySection";
-import App from './../../components/App';
 import DashBoard from "../../pages/DashBoard";
+import PenaltySection from "../../pages/PenaltySection";
+import Practice from "../../pages/Practice";
+import App from './../../components/App';
 
 export const router = createBrowserRouter([
     {
@@ -16,7 +17,11 @@ export const router = createBrowserRouter([
                 path: "/penalty",
                 element: <PenaltySection />
             },
-            
+            {
+                path: "/practice",
+                element: <Practice />
+            }
+
         ]
     }
 ])

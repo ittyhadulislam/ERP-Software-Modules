@@ -2,7 +2,7 @@ import { TextField } from "@mui/material";
 import classes from "../../assets/styles/customFieldCss/CustomTextField.module.css";
 
 // eslint-disable-next-line react/prop-types
-const CustomTextField = ({ disable, type, multiline, rowNumber, label }) => {
+const CustomTextField = ({ disable, type, multiline, rowNumber, label, handelChange = {}, value = "" }) => {
     const textFieldFullWidth = {
         width: "100%",
     }
@@ -18,6 +18,8 @@ const CustomTextField = ({ disable, type, multiline, rowNumber, label }) => {
             variant="outlined"
             rows={rowNumber}
             sx={textFieldFullWidth}
+            onChange={handelChange}
+            value={value}
         />
     );
 };

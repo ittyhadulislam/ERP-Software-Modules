@@ -17,7 +17,7 @@ const Layout = () => {
 
 
     return (
-        <>
+        <Box className="container">
             <SideBar activeInActive={isActive} />
             <Box className={`column ${isActive ? "active" : ""}`}>
                 <Navbar ActiveInActive={handelActiveInActive} />
@@ -26,7 +26,7 @@ const Layout = () => {
                 </Main>
                 <Footer />
             </Box>
-        </>
+        </Box>
     );
 };
 

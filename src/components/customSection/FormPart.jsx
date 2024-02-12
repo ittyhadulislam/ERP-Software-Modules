@@ -5,7 +5,7 @@ import CustomButton from '../customField/CustomButton';
 import ButtonPart from './ButtonPart';
 
 // eslint-disable-next-line react/prop-types
-const FormPart = ({ text, children }) => {
+const FormPart = ({ text, children, handelSubmit }) => {
     return (
         <Card variant='outlined' sx={{
             padding: "10px 10px 10px 10px",
@@ -40,7 +40,7 @@ const FormPart = ({ text, children }) => {
                     <Grid item xs={12} md={1}>
                     </Grid>
                     <Grid item xs={12} md={4} display={"flex"} justifyContent={"end"}>
-                        <CustomButton color={"info"} startIcon={<MdSaveAlt />}>Save</CustomButton>
+                        <CustomButton color={"info"} startIcon={<MdSaveAlt />} handelSubmit={handelSubmit}>Save</CustomButton>
                     </Grid>
                 </ButtonPart>
             </CardContent>

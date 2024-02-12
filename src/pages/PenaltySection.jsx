@@ -1,59 +1,124 @@
 import { Box, Grid } from "@mui/material";
+import axios from "axios";
+import dayjs from "dayjs";
+import { useEffect, useState } from 'react';
 import { FaRegCheckCircle } from "react-icons/fa";
-import CustomAutoComplete from "../components/customField/CustomAutoComplete";
 import CustomButton from "../components/customField/CustomButton";
 import CustomDataGrid from "../components/customField/CustomDataGrid";
+import CustomDateTimePicker from "../components/customField/CustomDateTimePicker";
 import FormPart from "../components/customSection/FormPart";
 import TablePart from "../components/customSection/TablePart";
-import CustomDateTimePicker from './../components/customField/CustomDateTimePicker';
+import CustomAutoComplete from './../components/customField/CustomAutoComplete';
 import CustomTextField from './../components/customField/CustomTextField';
 import ButtonPart from './../components/customSection/ButtonPart';
 
+
 const PenaltySection = () => {
 
-    const AutocompleteOptions = [
-        {
-            comName: 'DG Info SYS',
-            refID: 100,
-            deptName: 'Admin',
-            secName: "ERP",
-            storeName: "General Store",
-            mainCategory: "Winter Cloth",
-            itemDescription: "Jacket",
-            brand: "Adidas",
-            unit: "1"
-        },
-        {
-            comName: 'DG Info SYS',
-            refID: 200,
-            deptName: 'Admin',
-            secName: "ERP",
-            storeName: "General Store",
-            mainCategory: "Winter Cloth",
-            itemDescription: "Swatter",
-            brand: "Nike",
-            unit: "6"
-        }
+    const [apiData, setApiData] = useState([])
 
-    ];
+    const [emp_id, setEmp_id] = useState(null)
+    const [emp_name, setEmpName] = useState("")
+    const [punishment_reson, setPunishment_Reason] = useState("")
+    const [punishment_amount, setPunishment_Amount] = useState()
+    const [punishment_date, setPunishment_Date] = useState(null)
+    // const [is_completed, setIs_Completed] = useState(false)
+    // const [completed_date, setCompleted_Date] = useState("2024-02-12T06:58:40.659Z")
+    // const [is_deleted, setIs_Deleted] = useState(false)
+    // const [deleted_date, setDeleted_Date] = useState("2024-02-12T06:58:40.659Z")
+
+
+    const fetchData = async () => {
+        try {
+            const res = await axios.get(`http://192.168.100.186:8084/api/punishment_/GetAll`)
+            // const res = await axios.get(`https://jsonplaceholder.typicode.com/posts`)
+            setApiData(res.data)
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    useEffect(() => {
+        fetchData()
+    }, [])
+
+    const postData = (newData) => {
+        axios.post(`http://192.168.100.186:8084/api/punishment_/Create`, newData)
+            .then(() => {
+                setApiData((previousData) => [...previousData + newData]);
+                fetchData()
+            })
+            .catch((error) => console.log(error));
+    }
+
+
+    const handelChangeName = (e) => {
+        setEmpName(e.target.value)
+    }
+    const handelChangeAmount = (e) => {
+        setPunishment_Amount(e.target.valueAsNumber)
+    }
+    const handelChangeDescription = (e) => {
+        setPunishment_Reason(e.target.value)
+    }
+    const handelSelect = (e, newValue) => {
+        setEmp_id(newValue)
+    }
+    const handelChangeDate = (date) => {
+        setPunishment_Date(date)
+    }
+
+    const formateDate = dayjs(punishment_date).format('DD-MM-YYYY')
+
+    const handelSubmit = (e) => {
+        e.preventDefault()
+        const data = {
+            formateDate,
+            emp_id,
+            emp_name,
+            punishment_reson,
+            punishment_amount,
+        }
+        postData(data)
+        clearField()
+        console.log("clicked")
+    }
+
+    const clearField = () => {
+        setEmpName("")
+        setPunishment_Amount("")
+        setPunishment_Reason("")
+        setEmp_id(null)
+    }
+
+
+    // console.log(apiData)
+
+    // console.log(emp_name)
+    // console.log(punishment_amount)
+    // console.log(punishment_reson)
+    // console.log(emp_id)
+    // console.log(punishment_date)
+
+
 
     return (
         <>
-            <FormPart text="Add List">
+            <FormPart text="Add List" handelSubmit={handelSubmit}>
                 <Grid item xs={12} md={6}>
-                    <CustomDateTimePicker label="Penalty Date" />
+                    <CustomDateTimePicker label="Penalty Date" handelSelectDate={handelChangeDate} value={punishment_date} />
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <CustomAutoComplete options={AutocompleteOptions.map(option => option.comName)} label="Employee ID" />
+                    <CustomAutoComplete options={apiData.map(option => option.emp_id)} label="Employee ID" handelSelect={handelSelect} value={emp_id} />
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <CustomTextField type={"text"} label={"Employee name"} />
+                    <CustomTextField type={"text"} label={"Employee name"} handelChange={handelChangeName} value={emp_name} />
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <CustomTextField type={"number"} label={"Penalty Amount"} />
+                    <CustomTextField type={"number"} label={"Penalty Amount"} handelChange={handelChangeAmount} value={punishment_amount} />
                 </Grid>
                 <Grid item xs={12} md={12}>
-                    <CustomTextField type={"number"} label={"Penalty Amount"} multiline={true} />
+                    <CustomTextField type={"number"} label={"Penalty Description"} multiline={true} handelChange={handelChangeDescription} value={punishment_reson} />
                 </Grid>
             </FormPart>
             <Box sx={{
@@ -63,7 +128,12 @@ const PenaltySection = () => {
                 backgroundColor: "white",
             }}>
                 <TablePart>
-                    <CustomDataGrid />
+                    <CustomDataGrid row={apiData?.map((item, index) => {
+                        return {
+                            ...item,
+                            serial: index + 1
+                        }
+                    })} />
                 </TablePart>
                 <Box sx={{ marginTop: "20px" }} />
                 <ButtonPart>
