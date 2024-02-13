@@ -1,7 +1,7 @@
 .footer {
     border-top: 1px solid var(--ash);
     background-color: var(--white);
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 .footerContent {

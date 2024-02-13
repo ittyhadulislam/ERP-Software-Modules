@@ -1,11 +1,16 @@
 import { AiOutlineAlipayCircle } from "react-icons/ai";
 import { MdGavel, MdSpaceDashboard } from "react-icons/md";
-
+import { TiInfoLarge } from "react-icons/ti";
 export const menus = [
     {
         pathDirection: "/",
         listText: "Dashboard",
         icon: <MdSpaceDashboard color="#76D7C4" size={20} />,
+    },
+    {
+        pathDirection: "/addEmpInfo",
+        listText: "Add Information",
+        icon: <TiInfoLarge color="#742BBD" size={20} />,
     },
     {
         pathDirection: "/penalty",

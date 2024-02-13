@@ -1,0 +1,21 @@
+.fileUpload {
+    width: 100%;
+    position: relative;
+}
+
+.customFileButton {
+    background-color: var(--sky-blue) !important;
+    padding: 2px 10px !important;
+    color: var(--white) !important;
+    font-size: 14px !important;
+}
+
+.customFileButton:hover {
+    background-color: var(--sky-blue) !important;
+    color: var(--white) !important;
+}
+
+.customText {
+    color: #aaa;
+    margin-left: 10px;
+}

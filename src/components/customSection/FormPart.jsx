@@ -9,7 +9,7 @@ const FormPart = ({ text, children, handelSubmit }) => {
     return (
         <Card variant='outlined' sx={{
             padding: "10px 10px 10px 10px",
-            width: "100%"
+            width: "100%",
         }}>
             <CardContent>
                 <Box sx={{

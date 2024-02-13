@@ -22,16 +22,12 @@ const PenaltySection = () => {
     const [punishment_reson, setPunishment_Reason] = useState("")
     const [punishment_amount, setPunishment_Amount] = useState()
     const [punishment_date, setPunishment_Date] = useState(null)
-    // const [is_completed, setIs_Completed] = useState(false)
-    // const [completed_date, setCompleted_Date] = useState("2024-02-12T06:58:40.659Z")
-    // const [is_deleted, setIs_Deleted] = useState(false)
-    // const [deleted_date, setDeleted_Date] = useState("2024-02-12T06:58:40.659Z")
 
 
+    // ----- Get Functionality -----
     const fetchData = async () => {
         try {
             const res = await axios.get(`http://192.168.100.186:8084/api/punishment_/GetAll`)
-            // const res = await axios.get(`https://jsonplaceholder.typicode.com/posts`)
             setApiData(res.data)
         } catch (error) {
             console.log(error);
@@ -42,6 +38,8 @@ const PenaltySection = () => {
         fetchData()
     }, [])
 
+
+    // ----- Post Functionality -----
     const postData = (newData) => {
         axios.post(`http://192.168.100.186:8084/api/punishment_/Create`, newData)
             .then(() => {
@@ -92,33 +90,25 @@ const PenaltySection = () => {
     }
 
 
-    // console.log(apiData)
-
-    // console.log(emp_name)
-    // console.log(punishment_amount)
-    // console.log(punishment_reson)
-    // console.log(emp_id)
-    // console.log(punishment_date)
-
 
 
     return (
         <>
-            <FormPart text="Add List" handelSubmit={handelSubmit}>
-                <Grid item xs={12} md={6}>
-                    <CustomDateTimePicker label="Penalty Date" handelSelectDate={handelChangeDate} value={punishment_date} />
-                </Grid>
+            <FormPart text="Add Penalty List" handelSubmit={handelSubmit}>
                 <Grid item xs={12} md={6}>
                     <CustomAutoComplete options={apiData.map(option => option.emp_id)} label="Employee ID" handelSelect={handelSelect} value={emp_id} />
                 </Grid>
                 <Grid item xs={12} md={6}>
-                    <CustomTextField type={"text"} label={"Employee name"} handelChange={handelChangeName} value={emp_name} />
+                    <CustomTextField label={"Employee name"} handelChange={handelChangeName} value={emp_name} inputProps={{ readOnly: true, }} />
                 </Grid>
                 <Grid item xs={12} md={6}>
                     <CustomTextField type={"number"} label={"Penalty Amount"} handelChange={handelChangeAmount} value={punishment_amount} />
                 </Grid>
+                <Grid item xs={12} md={6}>
+                    <CustomDateTimePicker label="Penalty Date" handelSelectDate={handelChangeDate} value={punishment_date} />
+                </Grid>
                 <Grid item xs={12} md={12}>
-                    <CustomTextField type={"number"} label={"Penalty Description"} multiline={true} handelChange={handelChangeDescription} value={punishment_reson} />
+                    <CustomTextField type={"text"} label={"Penalty Description"} multiline={true} handelChange={handelChangeDescription} value={punishment_reson} />
                 </Grid>
             </FormPart>
             <Box sx={{
@@ -152,3 +142,23 @@ const PenaltySection = () => {
 };
 
 export default PenaltySection;
+
+
+
+
+
+// const [is_completed, setIs_Completed] = useState(false)
+// const [completed_date, setCompleted_Date] = useState("2024-02-12T06:58:40.659Z")
+// const [is_deleted, setIs_Deleted] = useState(false)
+// const [deleted_date, setDeleted_Date] = useState("2024-02-12T06:58:40.659Z")
+
+
+// const res = await axios.get(`https://jsonplaceholder.typicode.com/posts`)
+
+// console.log(apiData)
+
+// console.log(emp_name)
+// console.log(punishment_amount)
+// console.log(punishment_reson)
+// console.log(emp_id)
+// console.log(punishment_date)
