@@ -13,6 +13,11 @@ export const menus = [
         icon: <TiInfoLarge color="#742BBD" size={20} />,
     },
     {
+        pathDirection: "/penaltyLatest",
+        listText: "Penalty Section Latest",
+        icon: <MdGavel color="#C0392B" size={20} />,
+    },
+    {
         pathDirection: "/penalty",
         listText: "Penalty Section",
         icon: <MdGavel color="#C0392B" size={20} />,

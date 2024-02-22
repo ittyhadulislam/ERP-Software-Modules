@@ -1,16 +1,17 @@
 .inputField input {
-    height: 30px;
+    height: 25px;
     padding: 0px 10px;
-    font-size: 14px;
+    font-size: 12px;
     width: 100%;
 }
 
 .inputField label {
     height: 20px;
-    top: -11px;
-    font-size: 14px;
+    top: -12px;
+    font-size: 12px;
 }
 
 .inputField label[data-shrink="true"] {
     top: 0;
+    font-size: 13px;
 }

@@ -20,7 +20,7 @@ const CustomTextField = ({ disable, type, multiline, rowNumber, label, handelCha
             sx={textFieldFullWidth}
             onChange={handelChange}
             value={value}
-            required={required}
+            required = {required}
             inputProps={inputProps}
         />
     );

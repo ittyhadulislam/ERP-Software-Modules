@@ -9,9 +9,37 @@ import CustomDateTimePicker from "../components/customField/CustomDateTimePicker
 import FormPart from "../components/customSection/FormPart";
 import TablePart from "../components/customSection/TablePart";
 import CustomAutoComplete from './../components/customField/CustomAutoComplete';
+import CustomCard from './../components/customField/CustomCard';
 import CustomTextField from './../components/customField/CustomTextField';
 import ButtonPart from './../components/customSection/ButtonPart';
 
+const columns = [
+    {
+        field: 'emp_id',
+        headerName: 'Emp ID',
+        flex: 1,
+        headerAlign: 'center',
+    },
+    {
+        field: 'emp_name',
+        headerName: 'Employee Name',
+        flex: 1,
+        headerAlign: 'center',
+    },
+    {
+        field: 'punishment_amount',
+        headerName: 'Penalty Amount',
+        flex: 1,
+        headerAlign: 'center',
+    },
+    {
+        field: 'punishment_date',
+        headerName: 'Penalty Date',
+        type: 'Date',
+        flex: 1,
+        headerAlign: 'center',
+    },
+];
 
 const PenaltySection = () => {
 
@@ -20,7 +48,7 @@ const PenaltySection = () => {
     const [emp_id, setEmp_id] = useState(null)
     const [emp_name, setEmpName] = useState("")
     const [punishment_reson, setPunishment_Reason] = useState("")
-    const [punishment_amount, setPunishment_Amount] = useState()
+    const [punishment_amount, setPunishment_Amount] = useState(null)
     const [punishment_date, setPunishment_Date] = useState(null)
 
 
@@ -94,38 +122,44 @@ const PenaltySection = () => {
 
     return (
         <>
-            <FormPart text="Add Penalty List" handelSubmit={handelSubmit}>
-                <Grid item xs={12} md={6}>
-                    <CustomAutoComplete options={apiData.map(option => option.emp_id)} label="Employee ID" handelSelect={handelSelect} value={emp_id} />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                    <CustomTextField label={"Employee name"} handelChange={handelChangeName} value={emp_name} inputProps={{ readOnly: true, }} />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                    <CustomTextField type={"number"} label={"Penalty Amount"} handelChange={handelChangeAmount} value={punishment_amount} />
-                </Grid>
-                <Grid item xs={12} md={6}>
-                    <CustomDateTimePicker label="Penalty Date" handelSelectDate={handelChangeDate} value={punishment_date} />
-                </Grid>
-                <Grid item xs={12} md={12}>
-                    <CustomTextField type={"text"} label={"Penalty Description"} multiline={true} handelChange={handelChangeDescription} value={punishment_reson} />
-                </Grid>
-            </FormPart>
+            <CustomCard>
+                <FormPart text="Add Penalty List" handelSubmit={handelSubmit}>
+                    <Grid item xs={12} md={6} sx={{ paddingBottom: 1 }}>
+                        <CustomAutoComplete options={apiData.map(option => String(option.emp_id))} label="Employee ID" handelSelect={handelSelect} value={emp_id} />
+                    </Grid>
+                    <Grid item xs={12} md={6} sx={{ paddingBottom: 1 }}>
+                        <CustomTextField label={"Employee name"} handelChange={handelChangeName} value={emp_name} inputProps={{ readOnly: true, }} />
+                    </Grid>
+                    <Grid item xs={12} md={6} sx={{ paddingBottom: 1 }}>
+                        <CustomTextField type={"number"} label={"Penalty Amount"} handelChange={handelChangeAmount} value={punishment_amount} />
+                    </Grid>
+                    <Grid item xs={12} md={6} sx={{ paddingBottom: 1 }}>
+                        <CustomDateTimePicker label="Penalty Date" handelSelectDate={handelChangeDate} value={punishment_date} />
+                    </Grid>
+                    <Grid item xs={12} md={12}>
+                        <CustomTextField type={"text"} label={"Penalty Description"} multiline={true} handelChange={handelChangeDescription} value={punishment_reson} />
+                    </Grid>
+                </FormPart>
+            </CustomCard>
             <Box sx={{
-                marginTop: "20px",
-                padding: "25px",
+                marginTop: "5px",
+                padding: "5px",
                 border: "1px solid #39A7FF",
                 backgroundColor: "white",
             }}>
                 <TablePart>
-                    <CustomDataGrid row={apiData?.map((item, index) => {
-                        return {
-                            ...item,
-                            serial: index + 1
-                        }
-                    })} />
+                    <CustomDataGrid
+                        row={apiData?.map((item, index) => {
+                            return {
+                                ...item,
+                                serial: index + 1
+                            }
+                        })}
+                        columns={columns}
+                        checkboxSelection
+                    />
                 </TablePart>
-                <Box sx={{ marginTop: "20px" }} />
+                <Box sx={{ marginTop: "5px" }} />
                 <ButtonPart>
                     <Grid item xs={12} md={7}>
                     </Grid>

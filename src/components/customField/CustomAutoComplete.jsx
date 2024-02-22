@@ -4,7 +4,7 @@ import classes from "../../assets/styles/customFieldCss/CustomTextField.module.c
 // eslint-disable-next-line react/prop-types
 const CustomAutoComplete = ({ options = {}, label, value, handelSelect = {} }) => {
     const autoCompleteStyle = {
-        "& .MuiOutlinedInput-root": { height: "30px" },
+        "& .MuiOutlinedInput-root": { height: "25px", padding: 0 },
         "& .MuiAutocomplete-inputRoot .MuiAutocomplete-input": { padding: "0px 9px", height: '15px', fontSize: "14px" },
     }
     return (
