@@ -4,7 +4,7 @@ import { Box, Card } from '@mui/material';
 const CustomCard = ({ children }) => {
     return (
         <Card variant='outlined' sx={{
-            padding: "1px",
+            padding: "5px",
             width: "100%",
         }}>
             <Box sx={{

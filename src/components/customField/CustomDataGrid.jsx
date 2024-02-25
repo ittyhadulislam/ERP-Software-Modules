@@ -32,11 +32,11 @@ const gridStyle =
 }
 
 
-const CustomDataGrid = ({ row, columns, checkboxSelection, loading = false }) => {
+const CustomDataGrid = ({ row, columns, checkboxSelection, loading = false, onRowSelectionModelChange = {} }) => {
 
     return (
         <DataGrid
-            getRowId={(row) => row?.serial}
+            // getRowId={(row) => row?.serial}
             rows={row?.length > 0 ? row : []}
             columns={columns}
             loading={loading}
@@ -62,6 +62,7 @@ const CustomDataGrid = ({ row, columns, checkboxSelection, loading = false }) =>
             }}
             pageSizeOptions={[10, 25, 100]}
             checkboxSelection={checkboxSelection}
+            onRowSelectionModelChange={onRowSelectionModelChange}
             disableRowSelectionOnClick
             columnHeaderHeight={35}
             rowHeight={30}

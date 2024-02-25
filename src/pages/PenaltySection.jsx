@@ -140,6 +140,7 @@ const PenaltySection = () => {
                         <CustomTextField type={"text"} label={"Penalty Description"} multiline={true} handelChange={handelChangeDescription} value={punishment_reson} />
                     </Grid>
                 </FormPart>
+
             </CustomCard>
             <Box sx={{
                 marginTop: "5px",
