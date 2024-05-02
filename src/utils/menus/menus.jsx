@@ -8,6 +8,11 @@ export const menus = [
         icon: <MdSpaceDashboard color="#76D7C4" size={20} />,
     },
     {
+        pathDirection: "/addEmpInfoLatest",
+        listText: "Add Information Latest",
+        icon: <TiInfoLarge color="#742BBD" size={20} />,
+    },
+    {
         pathDirection: "/addEmpInfo",
         listText: "Add Information",
         icon: <TiInfoLarge color="#742BBD" size={20} />,

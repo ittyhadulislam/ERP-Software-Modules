@@ -2,9 +2,12 @@ import { TextField } from "@mui/material";
 import classes from "../../assets/styles/customFieldCss/CustomTextField.module.css";
 
 // eslint-disable-next-line react/prop-types
-const CustomTextField = ({ disable, type, multiline, rowNumber, label, handelChange = {}, value = "", required, inputProps }) => {
+const CustomTextField = ({ name, disable, type, multiline, rowNumber, label, handelChange = () => { }, handelBlur = () => { }, value = "", required, inputProps, helperText, error }) => {
     const textFieldFullWidth = {
         width: "100%",
+        // "& .MuiOutlinedInput-notchedoutline": {
+        //     fontSize: "12px"
+        // }
     }
 
     return (
@@ -12,6 +15,7 @@ const CustomTextField = ({ disable, type, multiline, rowNumber, label, handelCha
             className={classes.inputField}
             id="outlined-basic"
             label={label}
+            name={name}
             disabled={disable}
             type={type}
             multiline={multiline}
@@ -19,9 +23,12 @@ const CustomTextField = ({ disable, type, multiline, rowNumber, label, handelCha
             rows={rowNumber}
             sx={textFieldFullWidth}
             onChange={handelChange}
+            onBlur={handelBlur}
             value={value}
-            required = {required}
+            required={required}
             inputProps={inputProps}
+            helperText={helperText}
+            error={error}
         />
     );
 };

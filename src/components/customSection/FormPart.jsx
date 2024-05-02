@@ -17,8 +17,8 @@ const FormPart = ({ text, children }) => {
                 color: "white"
             }}>
                 <Stack direction={"row"} spacing={1} alignItems={"center"}>
-                    <FaListUl />
-                    <Typography>{text}</Typography>
+                    <FaListUl size={15} />
+                    <Typography sx={{ fontSize: "15px" }}>{text}</Typography>
                 </Stack>
             </Card>
             <Grid container spacing={1} sx={{

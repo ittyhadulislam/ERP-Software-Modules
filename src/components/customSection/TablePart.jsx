@@ -4,7 +4,7 @@ const TablePart = ({ children }) => {
     return (
         <Box sx={{
             height: "430px",
-            marginBottom: "5px"
+            marginBottom: "5px",
         }}>
             {children}
         </Box>

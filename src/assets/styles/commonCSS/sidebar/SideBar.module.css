@@ -1,15 +1,21 @@
 .sideNav {
     position: fixed;
-    width: 250px;
-    height: 100%;
     background-color: var(--black);
+    height: 100%;
+    width: 250px;
+    z-index: 1;
+    left: -100%;
+    transition: left .4s;
     overflow: hidden;
-    transition: .3s;
 }
 
-.sideNav.active {
+/* .active {
+    left: 0
+} */
+
+/* .sideNav.active {
     width: 80px;
-}
+} */
 
 .topSection {
     height: 70px;
@@ -33,13 +39,26 @@
     background-color: var(--blue);
 }
 
-@media screen and (max-width:786px) {
+@media screen and (min-width: 1024px) {
     .sideNav {
-        left: -250px
+        left: 0;
+        width: 250px;
+        transition: width .4s;
     }
 
     .sideNav.active {
-        width: 250px;
+        width: 80px;
+    }
+}
+
+@media screen and (max-width:786px) {
+    .sideNav {
+        left: -100%;
+        width: 230px;
+        transition: left .4s;
+    }
+
+    .sideNav.active {
         left: 0;
     }
 }

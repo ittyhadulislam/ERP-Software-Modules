@@ -5,9 +5,7 @@ import { GrUpdate } from "react-icons/gr";
 import { MdSaveAlt } from "react-icons/md";
 import CustomAutoComplete from '../components/customField/CustomAutoComplete';
 import CustomButton from '../components/customField/CustomButton';
-import CustomDateTimePicker from '../components/customField/CustomDateTimePicker';
 import CustomTabPanel from '../components/customField/CustomTabPanel';
-import CustomTextField from '../components/customField/CustomTextField';
 import ButtonPart from '../components/customSection/ButtonPart';
 import FormPart from '../components/customSection/FormPart';
 import { DataContext } from '../context/DataProvider';
@@ -26,16 +24,19 @@ const PenaltySectionLatest = () => {
 
 
     const [emp_id, setEmp_id] = useState(null)
-    const [emp_name, setEmpName] = useState("")
-    const [punishment_reason, setPunishment_Reason] = useState("")
-    const [punishment_amount, setPunishment_Amount] = useState("")
-    const [punishment_date, setPunishment_Date] = useState(null)
+    // const [emp_name, setEmpName] = useState("")
+    // const [punishment_reason, setPunishment_Reason] = useState("")
+    // const [punishment_amount, setPunishment_Amount] = useState("")
+    // const [punishment_date, setPunishment_Date] = useState(null)
+
+
+    // console.log(punishment_reason)
 
     const handelTabChange = (e, value) => {
         setTabValue(value)
     }
 
-    console.log(tabValue)
+    // console.log(tabValue)
 
     const TabPanel = ({ children, value, index }) => {
         return (
@@ -44,27 +45,26 @@ const PenaltySectionLatest = () => {
                     value == index && (
                         children
                     )
-
                 }
             </Box>
         )
     }
 
-    const handelChangeName = (e) => {
-        setEmpName(e.target.value)
-    }
-    const handelChangeAmount = (e) => {
-        setPunishment_Amount(e.target.valueAsNumber)
-    }
-    const handelChangeDescription = (e) => {
-        setPunishment_Reason(e.target.value)
-    }
+    // const handelChangeName = (e) => {
+    //     setEmpName(e.target.value)
+    // }
+    // const handelChangeAmount = (e) => {
+    //     setPunishment_Amount(e.target.valueAsNumber)
+    // }
+    // // const handelChangeDescription = (e) => {
+    // //     setPunishment_Reason(e.target.value)
+    // // }
     const handelSelect = (e, newValue) => {
         setEmp_id(newValue)
     }
-    const handelChangeDate = (date) => {
-        setPunishment_Date(date)
-    }
+    // const handelChangeDate = (date) => {
+    //     setPunishment_Date(date)
+    // }
 
     const apiData = [
         { emp_id: 1 },
@@ -83,16 +83,19 @@ const PenaltySectionLatest = () => {
                             <CustomAutoComplete options={apiData.map(option => String(option.emp_id))} label="Employee ID" handelSelect={handelSelect} value={emp_id} />
                         </Grid>
                         <Grid item xs={12} md={6} sx={{ paddingBottom: 1 }}>
-                            <CustomTextField label={"Employee name"} handelChange={handelChangeName} value={emp_name} inputProps={{ readOnly: true, }} />
+                            {/* <CustomTextField label={"Employee name"} handelChange={handelChangeName} value={emp_name} inputProps={{ readOnly: true, }} /> */}
+                            {/* <CustomTextField label={"Employee name"} value={emp_name} inputProps={{ readOnly: true, }} /> */}
                         </Grid>
                         <Grid item xs={12} md={6} sx={{ paddingBottom: 1 }}>
-                            <CustomTextField type={"number"} label={"Penalty Amount"} handelChange={handelChangeAmount} value={punishment_amount} />
+
+                            {/* <CustomTextField type={"number"} label={"Penalty Amount"} handelChange={handelChangeAmount} value={punishment_amount} /> */}
                         </Grid>
                         <Grid item xs={12} md={6} sx={{ paddingBottom: 1 }}>
-                            <CustomDateTimePicker label="Penalty Date" handelSelectDate={handelChangeDate} value={punishment_date} />
+                            {/* <CustomDateTimePicker label="Penalty Date" handelSelectDate={handelChangeDate} value={punishment_date} /> */}
                         </Grid>
                         <Grid item xs={12} md={12}>
-                            <CustomTextField type={"text"} label={"Penalty Description"} multiline={true} handelChange={handelChangeDescription} value={punishment_reason} />
+                            {/* <CustomTextField type={"text"} label={"Penalty Description"} multiline={true} handelChange={handelChangeDescription} value={punishment_reason} /> */}
+                            {/* <CustomTextField label={"Description"} /> */}
                         </Grid>
                     </FormPart>
                     <ButtonPart>

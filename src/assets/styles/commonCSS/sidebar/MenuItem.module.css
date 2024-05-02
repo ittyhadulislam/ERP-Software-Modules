@@ -13,3 +13,11 @@
     display: "inline-block";
     white-space: nowrap;
 }
+
+@media screen and (max-width: 768px) {
+    .listItem {
+        padding: 10px 5px !important;
+        /* margin-bottom: 20px; */
+        gap: 0;
+    }
+}

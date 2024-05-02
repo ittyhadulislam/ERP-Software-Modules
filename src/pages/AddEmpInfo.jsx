@@ -166,6 +166,7 @@ const AddEmpInfo = () => {
                 border: "1px solid #39A7FF",
                 backgroundColor: "white",
                 borderRadius: "3px",
+                // minWidth: "100%"
             }}>
                 <TablePart>
                     <CustomDataGrid
@@ -181,7 +182,6 @@ const AddEmpInfo = () => {
                         loading={tableDataLoading}
                     />
                 </TablePart>
-
             </Box>
         </>
     );

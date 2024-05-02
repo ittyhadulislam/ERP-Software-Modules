@@ -8,8 +8,39 @@ import TablePart from '../../components/customSection/TablePart';
 
 const PendingTable = () => {
 
-    const { isClickInCheckbox, setIsClickInCheckbox } = useState(false)
+    const [isClickInCheckbox, setIsClickInCheckbox] = useState(false)
     const [selectionModel, setSelectionModel] = useState();
+    const [data, getData] = useState([
+        {
+            id: 1,
+            name: "Azmain",
+            age: 23,
+            email: "az.walker30822@gmail.com",
+            status: "pending"
+        },
+        {
+            id: 2,
+            name: "Adrita",
+            age: 20,
+            email: "ad.@gmail.com",
+            status: "complete"
+        },
+        {
+            id: 3,
+            name: "Mehrin",
+            age: 20,
+            email: "me.@gmail.com",
+            status: "pending"
+        },
+    ])
+
+    const handelRowSelectionModelChange = (ids) => {
+        setIsClickInCheckbox(true)
+        const selectedIDs = new Set(ids);
+        // console.log(selectedIDs)
+        const selectedRows = rows.filter(row => selectedIDs.has(row.id))
+        setSelectionModel(selectedRows)
+    }
 
     const column = [
         {
@@ -48,11 +79,42 @@ const PendingTable = () => {
             name: "Adrita",
             age: 20,
             email: "ad.@gmail.com",
+            status: "complete"
+        },
+        {
+            id: 3,
+            name: "Mehrin",
+            age: 20,
+            email: "me.@gmail.com",
             status: "pending"
         },
 
     ]
     console.log(selectionModel);
+
+    const handelComplete = () => {
+        // if (selectionModel === []) {
+        //     setIsClickInCheckbox(false)
+        // }
+        // else {
+        //     setIsClickInCheckbox(true)
+        // }
+        // // selectionModel.map(selection => {
+        // //     // selection.filter(selections => selections.status === "complete")
+        // //     if (selection.status === "complete") {
+        // //         console.log("completed")
+        // //     }
+        // //     else {
+        // //         console.log("pending")
+        // //     }
+        // // })
+        const complete = selectionModel.filter(selection => selection.status === "complete")
+        getData(complete)
+    }
+
+    console.log(data)
+
+    // rowData()
 
     return (
         <Box sx={{
@@ -65,7 +127,7 @@ const PendingTable = () => {
             <TablePart>
                 <CustomDataGrid
                     columns={column}
-                    row={rows.map((row, index) => {
+                    row={data.map((row, index) => {
                         return {
                             ...row,
                             serial: index
@@ -74,12 +136,8 @@ const PendingTable = () => {
                     checkboxSelection
                     onRowSelectionModelChange={(ids) => {
                         // console.log(data)
-                        const selectedIDs = new Set(ids);
-                        console.log(selectedIDs)
-                        const selectedRows = rows.filter(row => selectedIDs.has(row.id))
-                        setSelectionModel(selectedRows)
+                        handelRowSelectionModelChange(ids)
                     }}
-                // selectionModel={selectionModel}
                 />
             </TablePart>
             <ButtonPart>
@@ -95,7 +153,7 @@ const PendingTable = () => {
                                         <CustomButton color={"warning"} startIcon={<GrUpdate />} handelSubmit={{}}>Update</CustomButton>
                                 } */}
                     {
-                        <CustomButton color={"success"} disabled={isClickInCheckbox} startIcon={<IoMdCheckmarkCircleOutline />}>Complete</CustomButton>
+                        <CustomButton color={"success"} disabled={!isClickInCheckbox} startIcon={<IoMdCheckmarkCircleOutline />} handelSubmit={handelComplete}>Complete</CustomButton>
                     }
                 </Grid>
             </ButtonPart>

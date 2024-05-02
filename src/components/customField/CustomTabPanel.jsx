@@ -11,7 +11,7 @@ const CustomTabPanel = ({ file, handelTabChange, tabValue }) => {
         >
             {
                 file.map((tab, i) => {
-                    console.log(tab)
+                    // console.log(tab)
                     return (
                         <Tab label={tab.label} key={i} />
                     )
